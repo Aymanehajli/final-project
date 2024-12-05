@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h2>Blog Posts</h2>
+<ul>
+    {% for post in posts %}
+        <li>
+            {{ forloop.counter }}. {{ post.title }}
+            (<a href="{% url 'post_detail' post.pk %}">View</a> |
+            <a href="{% url 'edit_post' post.pk %}">Edit</a> |
+            <a href="{% url 'delete_post' post.pk %}">Delete</a>)
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'create_post' %}">Create New Post</a>
+{% endblock %}
